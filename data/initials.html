@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croissant - Your Initials</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="intro-container">
+        <div class="intro-content">
+            <h1>Croissant</h1>
+            <p class="subtext">Enter your initials (3-4 letters)</p>
+            
+            <form id="initialsForm" class="initials-form">
+                <input 
+                    type="text" 
+                    id="initialsInput" 
+                    placeholder="Your initials" 
+                    maxlength="4"
+                    minlength="1"
+                    autocomplete="off"
+                    autofocus
+                    pattern="[A-Za-z]{1,4}"
+                >
+                <button type="submit" class="enter-button">Continue</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Check if initials already stored
+        const storedInitials = localStorage.getItem('userInitials');
+        if (storedInitials) {
+            window.location.href = '/';
+        }
+        
+        document.getElementById('initialsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const initials = document.getElementById('initialsInput').value.trim().toUpperCase();
+            if (initials.length >= 1 && initials.length <= 4 && /^[A-Za-z]+$/.test(initials)) {
+                localStorage.setItem('userInitials', initials);
+                
+                // Send to server to store
+                fetch('/setinitials', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({initials: initials})
+                }).then(() => {
+                    window.location.href = '/';
+                });
+            }
+        });
+        
+        // Auto-uppercase input
+        document.getElementById('initialsInput').addEventListener('input', (e) => {
+            e.target.value = e.target.value.toUpperCase().replace(/[^A-Za-z]/g, '');
+        });
+    </script>
+</body>
+</html>

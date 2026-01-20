@@ -1,0 +1,2 @@
+# This file ensures the data directory is tracked by git
+# Place your web files (index.html, style.css, app.js) in this directory

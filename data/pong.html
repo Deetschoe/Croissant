@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croissant - Games</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="pong-container">
+        <header class="pong-header">
+            <h1>Games</h1>
+            <p class="subtitle">Choose a room</p>
+        </header>
+        
+        <div id="roomList" class="room-list">
+            <p class="loading">Loading rooms...</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="/">← Back</a>
+        </div>
+    </div>
+    
+    <script src="/pong-script.js" onerror="console.error('Failed to load pong-script.js'); document.getElementById('roomList').innerHTML = '<p class=\"empty\">Error loading game rooms. Please refresh.</p>';"></script>
+</body>
+</html>

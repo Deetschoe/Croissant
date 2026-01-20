@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croissant - Pong Room</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="game-info">
+                <h1>Room <span id="roomNumber">1</span></h1>
+                <p class="players-info">Players: <span id="player1">-</span> | <span id="player2">-</span></p>
+            </div>
+            <div class="game-controls">
+                <a href="/pong" class="back-button">← Leave</a>
+            </div>
+        </header>
+        
+        <div class="game-wrapper">
+            <canvas id="gameCanvas" width="800" height="400"></canvas>
+            <div class="mobile-controls">
+                <button id="upButton" class="control-button up-button">↑</button>
+                <button id="downButton" class="control-button down-button">↓</button>
+            </div>
+        </div>
+        
+        <div class="game-instructions">
+            <p class="desktop-instructions">Use ↑ ↓ arrow keys to move your paddle</p>
+            <p class="mobile-instructions">Tap the canvas or use ↑ ↓ buttons to move your paddle</p>
+        </div>
+    </div>
+    
+    <script src="/game-script.js"></script>
+</body>
+</html>
